@@ -39,5 +39,23 @@ Dự án được tổ chức theo các thư mục chức năng sau:
 * `Extra/`: Chứa hình ảnh demo và các tài liệu tham khảo bổ sung.
 
 ---
-
+## 📂 Cấu trúc thư mục Code
+```
+Code/
+├── client/
+│   ├── __init__.py
+│   ├── client.py       
+│   └── network.py       
+├── gui/
+│   ├── __init__.py
+│   └── chat_gui.py    
+├── protocol/
+│   ├── __init__.py
+│   └── message.py      
+├── server/
+│   ├── __init__.py
+│   └── server.py       
+└── main.py         
+```
+---
 > 🥀 **Lưu ý:** Repository này sẽ được nhóm cập nhật hàng tuần dựa trên tiến độ thực hiện thực tế của nhóm.
