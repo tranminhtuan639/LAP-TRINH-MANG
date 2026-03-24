@@ -1,2 +1,2 @@
 print (" HEllo ")
-print (" giờ bắt đầu làm ")
+print (" giờ bắt đầu  ")
