@@ -15,14 +15,14 @@ while True :
     print (f"{address} đã ngắt kết nối \n") 
       
 
-def xu_ly_client(client_sock):
+    def xu_ly_client(client_sock):
     # nói chuyện với 1 client
-    pass
+        pass
 
-while True:
-    client_sock, addr = server_sock.accept()
-    # tạo thread mới cho mỗi client, chạy song song
-    t = threading.Thread(target=xu_ly_client, args=(client_sock,))
-    t.start()
+    while True:
+        client_sock, addr = server_sock.accept()
+         # tạo thread mới cho mỗi client, chạy song song
+        t = threading.Thread(target=xu_ly_client, args=(client_sock,))
+        t.start()
 
 
