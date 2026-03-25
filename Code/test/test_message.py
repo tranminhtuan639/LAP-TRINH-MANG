@@ -1,11 +1,3 @@
-"""
-test/test_message.py
---------------------
-Test module cho message protocol.
-Chạy test: python -m pytest test/test_message.py
-Hoặc: python test/test_message.py
-"""
-
 import sys
 import os
 
