@@ -9,7 +9,8 @@ class Chatserver:
         self.port = port
         self._clients = {}
         self._lock = threading.Lock()
-        
+        self.chat_history: list[str] = []
+        self.history_lock = threading.Lock()
         
     def start(self):
         server_sock = socket.socket ( socket.AF_INET, socket. SOCK_STREAM)
@@ -22,13 +23,21 @@ class Chatserver:
         print ("Chờ xíu ...")
 
         while True :
-            client_sock , address = sever_sock.accept()
+            client_sock , address = server_sock.accept()
             print  (f" Có người kết nối từ {address} ")
             client_sock.send("kết nối thành cong \n".encode())
-            self._handle_client(client_sock)
-                
             
-    def handle_client(client_sock):
+            # Tạo thread riêng cho mỗi client, chạy song song
+            t = threading.Thread(
+                target= self.handle_client,
+                args= (client_sock,),
+                daemon= True  # hàm này tự tắt khi Ctrl+C
+            )
+            t.start()
+            
+    def handle_client(self, client_sock):
+        
+
       
 
            
