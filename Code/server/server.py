@@ -1,31 +1,34 @@
 import socket 
 import threading
+from protocol.message import decode_message, encode_message, build_message, build_leave
+
 
 class Chatserver:
-
-
-    def start(seft):
-        sever_sock = socket.socket ( socket.AF_INET, socket. SOCK_STREAM)
-        sever_sock.bind(('0.0.0.0',9999))
-        sever_sock.listen()
-        print ("Sever đang chạy chờ xíu ")
+    def __init__(self, host='0.0.0.0', port= 9999):
+        self.host = host 
+        self.port = port
+        self._clients = {}
+        self._lock = threading.Lock()
+        
+        
+    def start(self):
+        server_sock = socket.socket ( socket.AF_INET, socket. SOCK_STREAM)
+        
+         # Cho phép restart server nhanh, không bị lỗi
+        server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server_sock.bind((self.host , self.port))
+        server_sock.listen()
+        print (f"Sever đang chạy {self.host} : {self.port}\n ")
+        print ("Chờ xíu ...")
 
         while True :
             client_sock , address = sever_sock.accept()
             print  (f" Có người kết nối từ {address} ")
             client_sock.send("kết nối thành cong \n".encode())
-            client_sock.close()
-            print (f"{address} đã ngắt kết nối \n") 
-            
-
-            def xu_ly_client(client_sock):
-            # nói chuyện với 1 client
-                pass
-
-            while True:
-                # tạo thread mới cho mỗi client, chạy song song
-                t = threading.Thread(target=xu_ly_client, args=(client_sock,))
+            self._handle_client(client_sock)
                 
-            t.start()
+            
+    def handle_client(client_sock):
+      
 
-
+           
