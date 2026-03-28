@@ -1,7 +1,6 @@
 import socket 
 import threading
 from protocol.message import decode_message, encode_message, build_message, build_leave
-ss
 
 class Chatserver:
     def __init__(self, host='0.0.0.0', port= 9999):
@@ -15,7 +14,7 @@ class Chatserver:
     def start(self):
         server_sock = socket.socket ( socket.AF_INET, socket. SOCK_STREAM)
         
-         # Cho phép restart server nhanh, không bị lỗi
+        # Cho phép restart server nhanh, không bị lỗi
         server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server_sock.bind((self.host , self.port))
         server_sock.listen()
@@ -30,12 +29,16 @@ class Chatserver:
             # Tạo thread riêng cho mỗi client, chạy song song
             t = threading.Thread(
                 target= self.handle_client,
-                args= (client_sock,),
+                args= (client_sock, address,),
                 daemon= True  # hàm này tự tắt khi Ctrl+C
             )
             t.start()
             
-    def handle_client(self, client_sock):
+    def handle_client(self, client_sock: socket.socket, address ):
+        buffer = ''
+        username = None
+        data = client_sock.recv(5555)
+        
         
 
       
