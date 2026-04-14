@@ -1,9 +1,5 @@
-import tkinter as tk
-from tkinter import simpledialog, messagebox
-import queue
-import sys
-import os
 
+<<<<<<< HEAD
 if getattr(sys, 'frozen', False):
     os.chdir(sys._MEIPASS)
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -143,3 +139,5 @@ def run_client():
     app = ChatGUI(root)
     root.protocol("WM_DELETE_WINDOW", app.on_close)
     root.mainloop()
+=======
+>>>>>>> 3c1f4c1b89ee8554cad2a24f7c743ba0d2683ac0
