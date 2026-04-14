@@ -2,6 +2,9 @@ import sys
 import os
 import time
 
+if getattr(sys, 'frozen', False):
+    os.chdir(sys._MEIPASS)
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from client.network import NetworkClient
