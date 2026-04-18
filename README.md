@@ -25,6 +25,12 @@ Dự án tập trung xây dựng một ứng dụng chat sử dụng giao thức
 - Cho phép Client kết nối tới Server để gửi và nhận tin nhắn.
 
 ---
+## Link github và video report
+
+**Link github** : ```https://github.com/tranminhtuan639/LAP-TRINH-MANG.git```
+
+
+**Link video report** :```https://drive.google.com/drive/folders/1CZtSAd5FhegDPK5giM0jVZSuIWFRJqIM?usp=sharing```
 
 ## 👥 Thành viên nhóm và nhiệm vụ
 
