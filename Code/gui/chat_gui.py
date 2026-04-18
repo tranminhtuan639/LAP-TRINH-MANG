@@ -52,19 +52,31 @@ class ChatGUI:
         self.lbl_status.pack(fill=tk.X, padx=8, pady=(0, 4))
 
     def _ask_connect(self):
-        host = simpledialog.askstring("Host", "Địa chỉ server:", initialvalue="127.0.0.1", parent=self.root)
+        host = simpledialog.askstring("Host", "Địa chỉ server:", 
+                                      initialvalue="127.0.0.1", parent=self.root)
         if host is None or not host.strip():
-            self.root.destroy(); return
+            self.root.destroy()
+            return
 
-        port_str = simpledialog.askstring("Port", "Cổng:", initialvalue="9999", parent=self.root)
+
+        port_str = simpledialog.askstring("Port", "Cổng:", 
+                                          initialvalue="9999", parent=self.root)
         if port_str is None or not port_str.strip():
-            self.root.destroy(); return
+            self.root.destroy()
+            return
 
-        username = simpledialog.askstring("Tên", "Hãy nhập tên của bạn:", parent=self.root)
-        if not username or not username.strip():
-            self.root.destroy(); return
+        username_input = simpledialog.askstring("Tên", "Tên của bạn:", 
+                                                initialvalue="", parent=self.root)
+        
+        if username_input is None:                  
+            self.root.destroy()
+            return
+        
+        username = username_input.strip()
+        if not username:                            
+            username = "Anonymous"
 
-        self.username = username.strip()
+        self.username = username
         self.root.title(f"TCP Chat — {self.username}")
 
         try:
@@ -122,7 +134,6 @@ class ChatGUI:
         cmd = text.split()[0].lower()
         if cmd == "/quit":
             self.on_close()
-       ## elif cmd == "/lệnhkhác":   -- thêm lệnh
         else:
             self._display({"type": "system", "username": f"Lệnh không hợp lệ: {cmd}"})
 
@@ -141,3 +152,5 @@ def run_client():
     app = ChatGUI(root)
     root.protocol("WM_DELETE_WINDOW", app.on_close)
     root.mainloop()
+if __name__ == "__main__":
+    run_client()
